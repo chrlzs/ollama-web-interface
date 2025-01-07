@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const exec = require('child_process').exec;
 
 const app = express();
 const PORT = 3000;
@@ -9,15 +10,17 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // API endpoint to communicate with Ollama
 app.use(express.json());
+
 app.post('/api/query', async (req, res) => {
   const { query } = req.body;
 
-  // Replace this with actual interaction with Ollama (e.g., via a Python server, shell command, or SDK)
-  const mockResponse = {
-    response: `You asked: "${query}"`,
-  };
-
-  res.json(mockResponse);
+  exec(`ollama-cli-command ${query}`, (error, stdout, stderr) => {
+    if (error) {
+      res.status(500).json({ error: stderr });
+    } else {
+      res.json({ response: stdout });
+    }
+  });
 });
 
 // Start the server
