@@ -1,0 +1,41 @@
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    opacity: 0;
+    transition: opacity var(--transition-speed, 0.3s) ease-in-out;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: var(--lighter-color, #fff);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 1rem;
+    border-radius: var(--border-radius, 8px);
+    width: 90%; /* Could be more or less, depending on screen size */
+    max-width: 400px;
+    box-shadow: 0 2px 10px var(--dark-transparent-color, rgba(0, 0, 0, 0.2));
+    font-family: sans-serif;
+}
+
+/* The Close Button */
+.close-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-color, #333);
+    cursor: pointer;
+    background: none;
+    border: none;
+    float: right;
+    margin-left: auto;
+}
+
+.close-btn:hover {
+    color: var(--secondary-color, #f00);
+}
